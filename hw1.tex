@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{fancyhdr}
+\usepackage{lipsum}  
+\usepackage{listings} 
+\usepackage{xcolor}   
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+% Define macros for title and author
+\newcommand{\thetitle}{MATH 410 502 \\ Homework 2}
+\newcommand{\theauthor}{Keegan Smith}
+
+\title{\thetitle}
+\author{\theauthor}
+
+\pagestyle{fancy}
+\fancyhf{}  % Clear all header and footer fields
+\fancyhead[L]{\nouppercase{\rightmark}}
+\fancyhead[C]{\thetitle}  % Title in the center
+\fancyhead[R]{\theauthor}  % Your name on the right
+\begin{document}
+\section*{Problem 1}
+\section*{Problem 2}
+\begin{enumerate}
+\item For key generation in RSA, you start by picking two large prime numbers $p$ and $q$ (these should be large enough  that the product of $p \cdot q$ is on the magnitude of $2^1024$, this makes it infeasible to factor $p \cdot q$). The product of $p$ and $q$ is one part of the public key, which we will call $n$. You then calculate $\phi(n) = (p-1)(q-1)$. You then pick an $e$ which is relatively prime to $\phi(n)$ ($\phi(n)$ and $e$ do not share any common factors besides 1). This $e$ is also a public key. You then find a $d$ such that $ed = 1$ (mod $\phi(n)$). This $d$ can be found using the extended Euclidean algorithm. $e$ and $n$ are both public keys, while $d$ is a private key kept only by the person who created the system. \\
+Encryption is done by raising the message to the power of $e$ modulo $n$: $C = m^e$ (mod $n$). \\
+Decryption is done by raising the encrypted message to the power of $d$ modulo $n$: $m^{ed} = m^{t \cdot \phi(n) + 1} = m$ (mod $n$)\\
+\item Yes RSA encryption is secure against a known plaintext attack, as long as $n$ is sufficiently large. To discover the key $d$, the attacker would have to compute $\phi(n)$ which is as difficult as factoring $n$. Factoring $n$ is infeasible for an $n$ on the order of $2^{1024}$. 
+\end{enumerate}
+\section*{Problem 3}
+\section*{Problem 4}
+\section*{Problem 5}
+\section*{Problem 6}
+\end{document}
